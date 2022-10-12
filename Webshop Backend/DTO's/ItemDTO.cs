@@ -7,7 +7,7 @@ namespace Webshop_Backend.DTO_s
 
         [Table(name: "Items")]
         public class ItemDTO
-        {
+   {
 
             [Key]
             public int ItemID { get; set; }
@@ -21,7 +21,7 @@ namespace Webshop_Backend.DTO_s
         /*            [Column(TypeName = "varchar(500)")]
                     public string EAN { get; set; } = string.Empty;*/
 
-             public virtual ICollection<OrderDTO> Orders { get; set; }
+             //public virtual ICollection<OrderDTO> Orders { get; set; }
         
 
 
