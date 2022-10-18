@@ -12,5 +12,9 @@ namespace Webshop_Backend.Container
             _dbContext = dbContext;
         }
 
+        public UserDTO ConnectToOpenAccount()
+        {
+            return new UserDTO() { AccountID = 1 };
+        }
     }
 }
