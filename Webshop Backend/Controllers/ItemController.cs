@@ -8,36 +8,37 @@ namespace Webshop_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ItemController : ControllerBase
     {
         private readonly ApplicationDBContext dbContext;
-        public ProductController(ApplicationDBContext dbContext)
+        public ItemController(ApplicationDBContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
         [HttpGet]
 
-        public IActionResult GetAllProducts()
+        public IActionResult GetAllItems()
         {
-            var products = dbContext.items.ToList();
-            return Ok(products);
+            var items = dbContext.Items.ToList();
+            return Ok(items);
         }
 
         [Route("/[controller]/{id}")]
         [HttpGet]
-        public string GetProductByID(int Itemid)
+        public string GetItemByID(int ItemID)
         {
-            var byId = from Item in dbContext.items
-                       where Item.ItemID == Itemid
+            var byId = from Item in dbContext.Items
+                       where Item.ItemID == ItemID
                        select Item;
             return JsonConvert.SerializeObject(byId);
         }
+
 /*        [Route("/[controller]/Create")]
         [HttpPost]
-        public IActionResult SaveProduct(Item item)
+        public IActionResult SaveItem(Item items)
         {
-            dbContext.items.Add(item);
+            dbContext.Items.Add(items);
             dbContext.SaveChanges();
             return Ok();
         }*/

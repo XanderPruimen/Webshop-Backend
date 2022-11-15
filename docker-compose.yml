@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  webshopbackend:
+    image: ${DOCKER_REGISTRY-}webshopbackend
+    build:
+      context: .
+      dockerfile: Webshop Backend/Dockerfile

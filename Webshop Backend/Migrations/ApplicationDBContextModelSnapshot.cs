@@ -21,21 +21,6 @@ namespace Webshop_Backend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ItemDTOOrderDTO", b =>
-                {
-                    b.Property<int>("ItemsItemID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrdersOrderID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ItemsItemID", "OrdersOrderID");
-
-                    b.HasIndex("OrdersOrderID");
-
-                    b.ToTable("ItemDTOOrderDTO");
-                });
-
             modelBuilder.Entity("Webshop_Backend.DTO_s.ItemDTO", b =>
                 {
                     b.Property<int>("ItemID")
@@ -44,13 +29,20 @@ namespace Webshop_Backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ItemID"), 1L, 1);
 
+                    b.Property<string>("ItemImage")
+                        .IsRequired()
+                        .HasColumnType("varchar(500)");
+
                     b.Property<string>("ItemInfo")
                         .IsRequired()
                         .HasColumnType("varchar(500)");
 
-                    b.Property<string>("Price")
+                    b.Property<string>("ItemName")
                         .IsRequired()
                         .HasColumnType("varchar(500)");
+
+                    b.Property<decimal>("ItemPrice")
+                        .HasColumnType("decimal(18,0)");
 
                     b.HasKey("ItemID");
 
@@ -102,21 +94,6 @@ namespace Webshop_Backend.Migrations
                     b.HasKey("AccountID");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("ItemDTOOrderDTO", b =>
-                {
-                    b.HasOne("Webshop_Backend.DTO_s.ItemDTO", null)
-                        .WithMany()
-                        .HasForeignKey("ItemsItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Webshop_Backend.DTO_s.OrderDTO", null)
-                        .WithMany()
-                        .HasForeignKey("OrdersOrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Webshop_Backend.DTO_s.OrderDTO", b =>

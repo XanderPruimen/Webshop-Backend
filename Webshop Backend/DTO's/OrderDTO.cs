@@ -13,7 +13,7 @@ namespace Webshop_Backend.DTO_s
         public virtual UserDTO User { get; set; }
         [Column(TypeName = "varchar(500)")]
         public string Count { get; set; } = string.Empty;
-        public virtual ICollection<ItemDTO> Items { get; set; }
+/*        public virtual ICollection<ItemDTO> Items { get; set; }*/
 
     }
 }

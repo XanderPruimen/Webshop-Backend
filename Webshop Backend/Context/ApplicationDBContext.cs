@@ -11,7 +11,7 @@ namespace Webshop_Backend.Context
             optionsBuilder.EnableSensitiveDataLogging();
         }
 
-        public DbSet<ItemDTO> items { get; set; }
+            public DbSet<ItemDTO> Items { get; set; }
             public DbSet<UserDTO> users { get; set; }
             public DbSet<OrderDTO> orders { get; set; }
 

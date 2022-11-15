@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Webshop_Backend.Context;
 using Webshop_Backend.DTO_s;
 using Webshop_Backend.Models;
@@ -57,5 +58,41 @@ namespace Webshop_Backend.Controllers
                 return BadRequest("Error_When_Getting_Account");
             }
         }
+
+        [Route("/[controller]/register")]
+        [HttpPost]
+        public User register([FromBody] User u)
+        {
+            if (u.Username == "" || u.Email == "" || u.Password == "")
+            {
+                return null;
+            }
+            else
+            {
+                var user = _dbContext.users.Where(x => x.Email.Equals(u.Email)).FirstOrDefault();
+
+                if (user == null)
+                {
+                    try
+                    {
+                        _dbContext.users.Add(user);
+                        _dbContext.SaveChanges();
+                        return u;
+                        //redirect naar login page.
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
+            }
+
+        }
+
+
     }
 }

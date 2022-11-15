@@ -20,9 +20,10 @@ namespace Webshop_Backend.DTO_s
 
             [Column(TypeName = "varchar(500)")]
             public string ItemImage { get; set; } = string.Empty;
+
             [Column(TypeName = "decimal(18, 0)")]
             public decimal ItemPrice { get; set; } 
-        
+
 
 
     }
