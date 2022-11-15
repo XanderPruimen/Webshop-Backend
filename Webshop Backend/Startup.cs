@@ -19,11 +19,9 @@ namespace Webshop_Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
-            //Enable CORS
-            //services.AddCors(c =>
-            //{
-            //    c.AddPolicy("AllowAll", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
-            //});
+            services.AddControllers();
+ 
+
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -43,9 +41,32 @@ namespace Webshop_Backend
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CarPartsOnline", Version = "v1" });
-                c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Webshop Backend", Version = "v1" });
+            });
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Webshop Backend v1"));
+            }
+            app.UseCors("AllowAll");
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
             });
         }
     }
 }
+

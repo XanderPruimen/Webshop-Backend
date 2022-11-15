@@ -5,9 +5,6 @@ namespace Webshop_Backend.Context
 {
     public class ApplicationDBContext : DbContext
     {
-
-        public ApplicationDBContext() { }
-
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) { }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

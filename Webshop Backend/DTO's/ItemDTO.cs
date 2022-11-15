@@ -13,15 +13,15 @@ namespace Webshop_Backend.DTO_s
             public int ItemID { get; set; }
 
             [Column(TypeName = "varchar(500)")]
-            public string Price { get; set; } = string.Empty;
+            public string ItemName { get; set; } = string.Empty;
 
             [Column(TypeName = "varchar(500)")]
             public string ItemInfo { get; set; } = string.Empty;
 
-        /*            [Column(TypeName = "varchar(500)")]
-                    public string EAN { get; set; } = string.Empty;*/
-
-             //public virtual ICollection<OrderDTO> Orders { get; set; }
+            [Column(TypeName = "varchar(500)")]
+            public string ItemImage { get; set; } = string.Empty;
+            [Column(TypeName = "decimal(18, 0)")]
+            public decimal ItemPrice { get; set; } 
         
 
 
