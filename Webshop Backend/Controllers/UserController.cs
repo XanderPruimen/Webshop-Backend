@@ -93,6 +93,11 @@ namespace Webshop_Backend.Controllers
 
         }
 
+        public string loginNoToken(UserDTO user)
+        {
+            string validToken = TC.nonExistentToken(user);
 
+            return validToken;
+        }
     }
 }

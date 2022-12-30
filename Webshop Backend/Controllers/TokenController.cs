@@ -109,5 +109,11 @@ namespace Webshop_Backend.Controllers
             }
             return data;
         }
+
+        public string nonExistentToken(UserDTO user)
+        {
+            var x = GenerateToken(user);
+            return x.ToString();
+        }
     }
 }
